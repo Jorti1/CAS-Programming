@@ -1,0 +1,55 @@
+The TI-Nspire CX II (CAS) is the latest calculator from Texas Instruments at the time of writing. It was released in 2019 and contains so many updates from the old models such as the TI-84. In update 5.2, Micro Python was a newly added programming language for the calculator. Unfortunately, python is still limited within it's programmer shell and is unable to run built in CAS functions (CAS variants only).
+
+This programming documentation will mostly cover TI Basic not already mentioned in the eguide. We will assume you know TI Basic from previous models as a few things have changed in this newer model. If you do not know TI Basic, we recommend you learn on the TI Coding overview.
+
+CAS Programming:
+
+To use the CAS system in TI-Basic; you must create a new program (not a function) in the program editor. Set the library to public and create. A function is unable to define a global variable which will be needed to perform CAS functions. Local defined variables will not work. In your program. to use the CAS system, you will need to delete the existing variable in a letter or set of letters using DelVar [variable]. This is to ensure a preexisting variable will not conflict. After, you can request a string using RequestStr "enter your string here", [variable]. Alternatively, you can request the string as an argument when you call your function. Assuming you successfully inputted your variable, you now need to define a secondary variable. The secondary variable will be equal to expr(variable). From here, your variable is imported and you can begin using the CAS system. Use another document to call the program.
+
+Image of calculator model used throughout this documentation
+
+Example:
+
+Define test()=
+
+1 Prgm
+
+2 :DelVar p,o
+
+3 :RequestStr "Function: ",p
+
+4 :Define o(x)=expr(p)
+
+5 :Disp (o(1))▶Decimal
+
+6 :EndPrgm
+
+1- Here we declare this document is a program
+
+2- We delete two variables, in this case p and o. We suggest you only use global variables you do not intend to use such as uncommon letters or a variable with more than one letter.
+
+3- Our application is asking for a function such as f(x). The quotations will be the prompted question. We use ,p to define the input to variable p
+
+4- We define o(x) as a global variable. . We use expr to convert the string p into an expression.
+
+*After this step you can begin using the CAS system for anything you want to program.
+
+5- Since we are using a program, we cannot return a value. We must use Disp to print out a value before the program ends. This example shows o(x) being printed. By default, the CX II will print the function as if you wrote it and not solve. To solve, we use "▶Decimal" to output the an answer.
+
+Example without ▶Decimal
+
+test()
+
+Function: cos(x)
+
+cos(1)
+
+Example with ▶Decimal
+
+test()
+
+Function: cos(x)
+
+0.540302
+
+Note: The number of decimals depends on document settings. Alternatively you can also use ▶Fraction.
